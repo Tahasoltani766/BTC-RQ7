@@ -1,5 +1,6 @@
 import GPUtil
 import platform
+import cpuinfo
 
 
 def gpu_detection():
@@ -12,13 +13,7 @@ def gpu_detection():
         print("No GPU found.")
 
 def get_cpu_info():
-    try:
-        # Fetching CPU information using the platform module
-        system_info = platform.uname()
-        cpu_model = system_info.processor
-        return cpu_model
-    except Exception as e:
-        return f"Error: {e}"
+     return cpuinfo.get_cpu_info()
 
 
 if __name__ == "__main__":
