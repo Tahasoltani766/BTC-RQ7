@@ -1,7 +1,6 @@
 import GPUtil
 import cpuinfo
-import time
-
+import multiprocessing
 
 def gpu_detection():
     gpus = GPUtil.getGPUs()
@@ -18,7 +17,7 @@ def get_cpu_info():
 
 
 if __name__ == "__main__":
+    multiprocessing.freeze_support()
     cpu_model = get_cpu_info()
     gpu_model = gpu_detection()
     print(cpu_model, gpu_model)
-    # time.sleep(100)
