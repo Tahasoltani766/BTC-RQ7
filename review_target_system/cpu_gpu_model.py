@@ -1,6 +1,6 @@
 import GPUtil
-import platform
 import cpuinfo
+import time
 
 
 def gpu_detection():
@@ -12,11 +12,13 @@ def gpu_detection():
     else:
         print("No GPU found.")
 
+
 def get_cpu_info():
-     return cpuinfo.get_cpu_info()
+    return cpuinfo.get_cpu_info()
 
 
 if __name__ == "__main__":
     cpu_model = get_cpu_info()
     gpu_model = gpu_detection()
     print(cpu_model, gpu_model)
+    # time.sleep(100)
