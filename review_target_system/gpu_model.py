@@ -3,20 +3,19 @@
 
 import GPUtil
 import multiprocessing
+
+
 # OUT PUT :
 # NVIDIA GeForce RTX 3050 Laptop GPU
 
 def gpu_detection():
     gpus = GPUtil.getGPUs()
     if gpus:
-        for i in range(len(gpus)):
-            gpu = gpus[i]
-            print(gpu.name)
+        return True, gpus
     else:
-        print("No GPU found.")
+        return False, None
 
 
-if __name__ == "__main__":
+def main_gpu_model():
     multiprocessing.freeze_support()
-    gpu_model = gpu_detection()
-    print(gpu_model)
+    return gpu_detection()
