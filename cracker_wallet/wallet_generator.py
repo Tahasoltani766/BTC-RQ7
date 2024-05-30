@@ -1,6 +1,7 @@
-from bip39_list import bip_39
+from cracker_wallet.bip39_list import bip_39
 import random
 import string
+from cracker_wallet.internet_checker import check_internet_connection
 
 def generate_random_address(random_words):
         prefix = random.choice(["bc1q", "bc1p","3"])
@@ -18,7 +19,7 @@ def generate_random_address(random_words):
         suffix_length = 59
         suffix = ''.join(random.choice(possible_characters) for _ in range(suffix_length))
         address = initial_suffix + suffix
-        print(address, random_words)
+        return address
 
 def display_random_words(word_list):
     while True:
@@ -27,9 +28,12 @@ def display_random_words(word_list):
         random_words = random.sample(word_list, 12)
         generate_random_address(random_words)
 
+def main_generator_wallet():
+    if check_internet_connection:
+        display_random_words(bip_39)
+    else:
+        print("No Internet Connection")
 
-display_random_words(bip_39)
 
 
-
-
+main_generator_wallet()
