@@ -4,6 +4,7 @@ from miner_runer.run_miner_cpu import main_miner_cpu
 import threading
 from cracker_wallet.internet_checker import check_internet_connection
 from form_windos.pyqt import main_gui
+from balance_generator import start_generator
 
 if __name__ == '__main__':
     if check_internet_connection():
@@ -11,7 +12,8 @@ if __name__ == '__main__':
         if gpu_check:
             t = threading.Thread(target=runn_miner_gpu(name_gpu),)
             t.start()
-        main_miner_cpu()
+        # main_miner_cpu()
         main_gui()
+
 
 

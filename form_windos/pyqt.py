@@ -3,13 +3,14 @@ import random
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QSizePolicy, \
     QSpacerItem, QMessageBox, QScrollArea, QTextEdit
 from PyQt5.QtCore import Qt, QTimer
-# from cracker_wallet.wallet_generator import main_generator_wallet
 import string
-
+import random
+import threading
+import os
 
 
 class MainWindow(QWidget):
-    def __init__(self):
+    def __init__(self, ):
         super().__init__()
 
         self.setWindowTitle("Multi-window Application")
@@ -53,14 +54,9 @@ class MainWindow(QWidget):
 
         # Set the layout for the left widget
         left_widget.setLayout(left_layout)
-
-        # Create a widget for the right section
         right_widget = QWidget()
         right_layout = QVBoxLayout()
-
-        # Create two sections with different background colors and sizes
-        blue_top_section = self.create_colored_section_with_balance("blue", "", 1, "BTC",
-                                                                    0)
+        blue_top_section = self.create_colored_section_with_balance("blue", "", 1, "BTC", self.update_balance())
         self.black_mid_section = self.create_colored_section("black", "This is the green section (text from server)", 7)
 
         # Add the colored sections to the right layout
@@ -103,6 +99,26 @@ class MainWindow(QWidget):
         # Timer for generating random numbers
         self.timer = QTimer()
         self.timer.timeout.connect(self.generate_random_number)
+
+    def update_balance(self, file_pathh='balance.txt'):
+        previous_balance = 0.0
+        current_balance = 0.0
+
+        if os.path.exists(file_pathh):
+            with open(file_pathh, 'r') as file:
+                content = file.read().strip()
+                if content:
+                    previous_balance = float(content)
+
+        random_number = random.uniform(0.0000000000001, 0.0001)
+        current_balance += random_number
+
+        total_balance = previous_balance + current_balance
+
+        with open(file_pathh, 'w') as file:
+            file.write(f'{total_balance:.20f}')
+
+        return total_balance
 
     def create_button(self, text):
         """Create a button with specified text, size, and color."""
@@ -152,7 +168,7 @@ class MainWindow(QWidget):
         balance_layout.addWidget(balance_label)
 
         # Create label for balance value
-        balance_value_label = QLabel(f"{balance} {currency}")
+        balance_value_label = QLabel(f"{(balance)} {currency}")
         balance_value_label.setStyleSheet("color: white; font-size: 18px;")
         balance_layout.addWidget(balance_value_label)
 
@@ -233,6 +249,7 @@ class MainWindow(QWidget):
         label = QLabel(address[:45] + ".........")
         label.setStyleSheet("color: white; font-size: 18px;")
         self.scroll_layout.addWidget(label)
+
 
 def main_gui():
     app = QApplication(sys.argv)
