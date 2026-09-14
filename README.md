@@ -40,7 +40,7 @@ This project is intentionally published as a research sample so security researc
 ## 🖥️ Product Overview
 
 <p align="center">
-  <img src="assets/wallet-hunter.png" width="850">
+  <img src="wallet-GUI.png" width="850">
 </p>
 
 ---
