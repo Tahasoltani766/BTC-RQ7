@@ -327,9 +327,3 @@ The goal is to make defenders more capable of recognizing applications that appe
 Cybersecurity Researcher
 
 ---
-
-## ⭐ Security Research
-
-BTC-RQ7 is intended to serve as a controlled malware sample for security researchers and SOC analysts working on defensive research and detection engineering.
-
-**Understand the malware. Detect the behavior. Defend the system. 🛡️**
