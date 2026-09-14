@@ -100,6 +100,9 @@ The primary objective is **defensive research**, not unauthorized deployment.
 │ Operator              │
 └──────────────────────┘
 ```
+<p align="center">
+  <img src="TaskManager.png" width="650">
+</p>
 
 ### Core Security Concept
 
