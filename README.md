@@ -326,16 +326,6 @@ The goal is to make defenders more capable of recognizing applications that appe
 
 Cybersecurity Researcher
 
-Interests:
-
-* Security Research
-* SOC & SIEM
-* Malware Analysis
-* Threat Detection
-* Security Automation
-* AI for Cybersecurity
-* Open Source Security
-
 ---
 
 ## ⭐ Security Research
